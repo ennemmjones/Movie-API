@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MovieApp.Models.Movie>
+
+@{
+    ViewData["Title"] = "GetMovies";
+}
+
+<h1>Movie Database</h1>
+
+<p>
+    <a asp-action="PostMovies">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Runtime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Runtime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateMovies", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteMovies", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
